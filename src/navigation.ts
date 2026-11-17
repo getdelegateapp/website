@@ -24,11 +24,11 @@ export const footerData = {
         { text: 'Support', href: getPermalink('/support') },
         {
           text: 'Report a problem',
-          href: 'https://github.com/robskinney/delegate-support/issues/new?template=bug.yml',
+          href: 'https://github.com/getdelegateapp/support/issues/new?template=bug.yml',
         },
         {
           text: 'Request a feature',
-          href: 'https://github.com/robskinney/delegate-support/issues/new?template=feature.yml',
+          href: 'https://github.com/getdelegateapp/support/issues/new?template=feature.yml',
         },
       ],
     },
