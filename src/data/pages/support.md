@@ -12,7 +12,7 @@ Delegate is an independent, unofficial app. It isn't made, endorsed, or supporte
 
 - **Something not working?** [Report a problem](https://github.com/robskinney/delegate-support/issues/new?template=bug.yml) on GitHub.
 - **Have an idea?** [Request a feature](https://github.com/robskinney/delegate-support/issues/new?template=feature.yml).
-- **Prefer email?** Write to rockettutoring@outlook.com. Please include your device model, operating system version, and Delegate version (shown in Settings).
+- **Prefer email?** Write to contact@getdelegateapp.com. Please include your device model, operating system version, and Delegate version (shown in Settings).
 
 The **Report a Problem** and **Request a Feature** buttons in Delegate's Settings open the same forms with your app version and device already filled in. GitHub issues are public, so never post your server address, access token, or business details there.
 

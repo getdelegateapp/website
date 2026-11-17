@@ -49,4 +49,4 @@ If this policy changes, we will update this page and the "Last updated" date abo
 
 ## Contact
 
-Questions about this policy can be sent to rockettutoring@outlook.com.
+Questions about this policy can be sent to contact@getdelegateapp.com.
