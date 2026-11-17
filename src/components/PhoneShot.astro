@@ -1,0 +1,30 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+// A full-screen app screenshot with the device's rounded corners.
+export interface Props {
+  src: ImageMetadata;
+  alt: string;
+  device?: 'phone' | 'tablet';
+  eager?: boolean;
+  class?: string;
+}
+
+const { src, alt, device = 'phone', eager = false, class: className = '' } = Astro.props;
+---
+
+<Image
+  src={src}
+  alt={alt}
+  widths={device === 'phone' ? [320, 480, 640] : [640, 960, 1280, 1600]}
+  sizes={device === 'phone' ? '(max-width: 640px) 70vw, 320px' : '(max-width: 1024px) 92vw, 1000px'}
+  format="webp"
+  loading={eager ? 'eager' : 'lazy'}
+  fetchpriority={eager ? 'high' : 'auto'}
+  class:list={[
+    'block h-auto w-full ring-1 ring-black/10 dark:ring-white/15 shadow-xl shadow-black/15 dark:shadow-none',
+    device === 'phone' ? 'rounded-[2.4rem]' : 'rounded-[1.6rem]',
+    className,
+  ]}
+/>

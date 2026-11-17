@@ -1,0 +1,213 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import StructuredData from '~/components/common/StructuredData.astro';
+import PhoneShot from '~/components/PhoneShot.astro';
+import StoreLinks from '~/components/StoreLinks.astro';
+import { SITE, METADATA, I18N } from 'astrowind:config';
+import { Icon } from 'astro-icon/components';
+
+import summary from '~/assets/images/screens/iphone-01.png';
+import sales from '~/assets/images/screens/iphone-02.png';
+import bankAccount from '~/assets/images/screens/iphone-04.png';
+import invoice from '~/assets/images/screens/iphone-05.png';
+import ipadSummary from '~/assets/images/screens/ipad-01.png';
+import appIcon from '~/assets/images/app-icon.png';
+
+const metadata = {
+  title: 'Delegate: Manager.io for iPhone, iPad, and Android',
+  ignoreTitleTemplate: true,
+  description: METADATA?.description,
+};
+
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'MobileApplication',
+    name: SITE?.name,
+    url: SITE?.site,
+    inLanguage: I18N?.language,
+    operatingSystem: 'iOS, Android',
+    applicationCategory: 'FinanceApplication',
+    image: new URL(appIcon.src, SITE?.site).toString(),
+    publisher: { '@type': 'Organization', name: 'Rocket Tutoring LLC' },
+  },
+];
+
+const features = [
+  {
+    title: 'Stay on top of invoices',
+    text: 'Search sales and purchase invoices, and filter to what’s unpaid or overdue. Create, edit, or duplicate an invoice, or draft a payment reminder to a customer.',
+    image: sales,
+    alt: 'The Sales tab with the total owed, late invoices, and a list of paid and unpaid invoices.',
+  },
+  {
+    title: 'Record a payment where you see the invoice',
+    text: 'Mark an invoice paid from its detail screen, and balances update straight away. Open the original Manager document to print it or share it as a PDF.',
+    image: invoice,
+    alt: 'A paid sales invoice with its lines, the payment received, and a zero balance due.',
+  },
+  {
+    title: 'Follow every bank and cash account',
+    text: 'Balances with a 90-day chart, and the receipts, payments, and transfers behind them. Add or edit accounts without going back to the browser.',
+    image: bankAccount,
+    alt: 'A bank account’s balance chart above its recent receipts and payments.',
+  },
+];
+
+const extras = [
+  {
+    icon: 'tabler:building-store',
+    title: 'Several businesses, one app',
+    text: 'Save as many businesses as you like, even on different servers, and switch from the top of any tab.',
+  },
+  {
+    icon: 'tabler:server',
+    title: 'Manager Server or Manager Cloud',
+    text: 'Connect with an access token from Manager’s settings. Self-hosted servers on your local network work too.',
+  },
+  {
+    icon: 'tabler:lock',
+    title: 'Your books stay yours',
+    text: 'No account, analytics, or tracking. Delegate talks only to your Manager server, and your token stays on your device.',
+  },
+  {
+    icon: 'tabler:bolt',
+    title: 'Built natively',
+    text: 'Native controls on iOS and Android, light and dark mode, and your last-viewed data shows the moment the app opens.',
+  },
+];
+---
+
+<Layout metadata={metadata}>
+  <StructuredData slot="head" schema={structuredData} />
+
+  <!-- Hero -->
+  <section class="not-prose">
+    <div
+      class="max-w-6xl mx-auto px-4 sm:px-6 pt-10 pb-16 md:pt-16 md:pb-24 grid items-center gap-12 md:grid-cols-[1fr_auto] md:gap-16"
+    >
+      <div class="max-w-xl">
+        <h1 class="font-heading text-heading text-5xl md:text-6xl font-bold leading-[1.05] tracking-tight">
+          Manager.io, made for your phone.
+        </h1>
+        <p class="mt-6 text-xl text-muted leading-relaxed">
+          Delegate is a native iPhone, iPad, and Android app for your Manager.io business. Check your cash, follow up on
+          late invoices, and record payments without opening a browser.
+        </p>
+        <StoreLinks class="mt-8" />
+      </div>
+      <div class="mx-auto w-[min(70vw,300px)]">
+        <PhoneShot src={summary} alt="Delegate’s Summary screen for a sample hardware store." eager />
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="not-prose scroll-mt-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12 md:py-20 space-y-20 md:space-y-28">
+      {
+        features.map((feature, index) => (
+          <div class="grid items-center gap-10 md:grid-cols-2 md:gap-20">
+            <div class:list={['max-w-md', { 'md:order-2': index % 2 === 1 }]}>
+              <h2 class="font-heading text-heading text-3xl md:text-4xl font-semibold tracking-tight leading-tight">
+                {feature.title}
+              </h2>
+              <p class="mt-4 text-lg text-muted leading-relaxed">{feature.text}</p>
+            </div>
+            <div class:list={['mx-auto w-[min(70vw,280px)]', { 'md:order-1': index % 2 === 1 }]}>
+              <PhoneShot src={feature.image} alt={feature.alt} />
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- iPad -->
+  <section class="not-prose">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12 md:py-20">
+      <div class="max-w-2xl">
+        <h2 class="font-heading text-heading text-3xl md:text-4xl font-semibold tracking-tight leading-tight">
+          See where the business stands
+        </h2>
+        <p class="mt-4 text-lg text-muted leading-relaxed">
+          Your cash balance and how it’s changed, money in and out, what customers owe you, and what you owe. Tap any
+          figure to see the entries behind it. On iPad, it all fits on one screen.
+        </p>
+      </div>
+      <div class="mt-10 max-w-4xl">
+        <PhoneShot
+          src={ipadSummary}
+          device="tablet"
+          alt="Delegate on iPad: Summary with cash, cash flow, amounts owed, top customers, and accounts in two columns."
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Extras -->
+  <section class="not-prose">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12 md:py-20">
+      <dl class="grid gap-x-12 gap-y-10 sm:grid-cols-2">
+        {
+          extras.map((extra) => (
+            <div class="flex gap-4">
+              <Icon name={extra.icon} class="mt-0.5 size-6 shrink-0 text-primary" aria-hidden="true" />
+              <div>
+                <dt class="font-semibold text-heading text-lg">{extra.title}</dt>
+                <dd class="mt-1.5 text-muted leading-relaxed">{extra.text}</dd>
+              </div>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </section>
+
+  <FAQs
+    id="questions"
+    title="Questions"
+    schema
+    items={[
+      {
+        title: 'Is Delegate made by Manager.io?',
+        description:
+          'No. Delegate is an independent app made by Rocket Tutoring LLC. It isn’t affiliated with or endorsed by Manager.io, so please <a href="/support">contact us</a> about the app and Manager.io about Manager itself.',
+      },
+      {
+        title: 'What do I need to connect?',
+        description:
+          'The address you use to open Manager in your browser and an access token. In Manager, open your business and go to Settings › Access Tokens to create one.',
+      },
+      {
+        title: 'Does it work with Manager Cloud?',
+        description:
+          'Yes. Delegate works with Manager Cloud and with self-hosted Manager Server, including servers on your local network.',
+      },
+      {
+        title: 'Can I use more than one business?',
+        description:
+          'Yes. Manager access tokens belong to one business, so add each business with its own token, then switch between them from the top of any tab.',
+      },
+      {
+        title: 'Where is my data stored?',
+        description:
+          'On your device and on your own Manager server. We never receive it. The <a href="/privacy">privacy policy</a> has the details.',
+      },
+    ]}
+  />
+
+  <!-- Download -->
+  <section id="download" class="not-prose">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-16 md:py-24">
+      <div class="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:gap-8">
+        <img src={appIcon.src} alt="" width="88" height="88" class="size-22 rounded-[22%] shrink-0" loading="lazy" />
+        <div>
+          <h2 class="font-heading text-heading text-3xl font-semibold tracking-tight">Get Delegate</h2>
+          <StoreLinks class="mt-4" />
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,34 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '~/layouts/PageLayout.astro';
+
+// One page per file in src/data/pages (privacy.md → /privacy).
+export async function getStaticPaths() {
+  const pages = await getCollection('page');
+  return pages.map((page) => ({ params: { page: page.id }, props: { page } }));
+}
+
+const { page } = Astro.props;
+const { Content } = await render(page);
+
+const updated = page.data.updatedAt.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+  timeZone: 'UTC',
+});
+---
+
+<Layout metadata={{ title: page.data.title, description: page.data.description }}>
+  <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 lg:py-20 max-w-3xl">
+    <h1 class="font-bold font-heading text-4xl md:text-5xl leading-tighter tracking-tighter text-heading">
+      {page.data.title}
+    </h1>
+    <p class="mt-3 text-muted">Last updated {updated}</p>
+    <div
+      class="prose prose-lg max-w-none mt-10 dark:prose-invert prose-headings:font-heading prose-headings:tracking-tight prose-headings:font-semibold prose-a:text-primary prose-li:my-1"
+    >
+      <Content />
+    </div>
+  </section>
+</Layout>

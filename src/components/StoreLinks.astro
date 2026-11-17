@@ -1,0 +1,43 @@
+---
+import { Image } from 'astro:assets';
+import stores from '~/data/stores.json';
+import appStoreBadge from '~/assets/images/app-store.png';
+import googlePlayBadge from '~/assets/images/google-play.png';
+
+// Store links are edited in Pages CMS ("Store links"). Until one is set, its badge is replaced by a note.
+const links = [
+  { href: stores.appStore, badge: appStoreBadge, alt: 'Download on the App Store' },
+  { href: stores.googlePlay, badge: googlePlayBadge, alt: 'Get it on Google Play' },
+].filter((link) => link.href);
+
+export interface Props {
+  class?: string;
+}
+const { class: className = '' } = Astro.props;
+---
+
+<div class:list={['flex flex-wrap items-center gap-3', className]}>
+  {
+    links.map(({ href, badge, alt }) => (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="rounded-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+      >
+        <Image src={badge} alt={alt} height={48} class="h-12 w-auto" />
+      </a>
+    ))
+  }
+  {
+    links.length < 2 && (
+      <p class="text-muted">
+        {links.length === 0
+          ? 'Coming soon to the App Store and Google Play.'
+          : stores.appStore
+            ? 'Coming soon to Google Play.'
+            : 'Coming soon to the App Store.'}
+      </p>
+    )
+  }
+</div>

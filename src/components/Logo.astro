@@ -1,0 +1,10 @@
+---
+import { Image } from 'astro:assets';
+import { SITE } from 'astrowind:config';
+import appIcon from '~/assets/images/app-icon.png';
+---
+
+<span class="self-center ml-2 rtl:ml-0 rtl:mr-2 flex items-center gap-2.5 whitespace-nowrap">
+  <Image src={appIcon} alt="" width={32} height={32} class="rounded-[22%]" loading="eager" />
+  <span class="text-xl font-semibold tracking-tight text-heading">{SITE?.name}</span>
+</span>

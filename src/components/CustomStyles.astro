@@ -1,0 +1,48 @@
+---
+// Font family comes from Astro's Fonts API (see `fonts` in astro.config.ts and
+// <Font /> in Layout.astro), exposed as `--font-plex`.
+// Colours are taken from Delegate's app icon (#639396).
+---
+
+<style is:inline>
+  :root {
+    --aw-font-sans: var(--font-plex);
+    --aw-font-serif: var(--font-plex);
+    --aw-font-heading: var(--font-plex);
+
+    --aw-color-primary: rgb(47 93 96);
+    --aw-color-secondary: rgb(36 74 77);
+    --aw-color-accent: rgb(99 147 150);
+
+    --aw-color-text-heading: rgb(14 24 24);
+    --aw-color-text-default: rgb(30 41 41);
+    --aw-color-text-muted: rgb(30 41 41 / 68%);
+    --aw-color-bg-page: rgb(255 255 255);
+
+    --aw-color-bg-page-dark: rgb(0 0 0);
+
+    ::selection {
+      background-color: rgb(99 147 150 / 30%);
+    }
+  }
+
+  .dark {
+    --aw-font-sans: var(--font-plex);
+    --aw-font-serif: var(--font-plex);
+    --aw-font-heading: var(--font-plex);
+
+    --aw-color-primary: rgb(141 189 191);
+    --aw-color-secondary: rgb(170 208 210);
+    --aw-color-accent: rgb(141 189 191);
+
+    --aw-color-text-heading: rgb(245 247 247);
+    --aw-color-text-default: rgb(222 230 230);
+    --aw-color-text-muted: rgb(222 230 230 / 66%);
+    --aw-color-bg-page: rgb(0 0 0);
+
+    ::selection {
+      background-color: rgb(99 147 150 / 45%);
+      color: white;
+    }
+  }
+</style>

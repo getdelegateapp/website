@@ -1,0 +1,47 @@
+# Pages CMS configuration: https://pagescms.org/docs/configuration/
+content:
+  - name: pages
+    label: Pages
+    description: Privacy policy, support, and other text pages. Each file is published at /<file name>, e.g. privacy.md → /privacy.
+    type: collection
+    path: src/data/pages
+    filename: '{fields.title}.md'
+    format: yaml-frontmatter
+    view:
+      fields: [title, updatedAt]
+      primary: title
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: description
+        label: Description
+        description: One sentence for search results and link previews.
+        type: text
+      - name: updatedAt
+        label: Last updated
+        type: date
+        required: true
+        options:
+          format: yyyy-MM-dd
+      - name: body
+        label: Body
+        type: rich-text
+        options:
+          format: markdown
+
+  - name: stores
+    label: Store links
+    description: Paste each store link once the app is live. Until then the site shows "Coming soon".
+    type: file
+    path: src/data/stores.json
+    format: json
+    fields:
+      - name: appStore
+        label: App Store URL
+        type: string
+      - name: googlePlay
+        label: Google Play URL
+        description: https://play.google.com/store/apps/details?id=com.robertskinney.delegate
+        type: string
