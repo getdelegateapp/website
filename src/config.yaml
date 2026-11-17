@@ -9,7 +9,7 @@ metadata:
   title:
     default: Delegate
     template: '%s | Delegate'
-  description: 'A native iPhone, iPad, and Android app for Manager.io. See cash, invoices, and bank accounts, and record payments on the go.'
+  description: 'A native iPhone, iPad, and Android app for Manager.io accounting. Check cash and invoices, and record payments, with Manager Cloud or Manager Server.'
   robots:
     index: true
     follow: true
