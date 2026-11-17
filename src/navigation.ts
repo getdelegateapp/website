@@ -11,10 +11,11 @@ export const headerData = {
 export const footerData = {
   links: [
     {
-      title: 'Delegate',
+      title: 'App',
       links: [
         { text: 'Features', href: getPermalink('/#features') },
         { text: 'Questions', href: getPermalink('/#questions') },
+        { text: 'Privacy Policy', href: getPermalink('/privacy') },
       ],
     },
     {
@@ -32,7 +33,7 @@ export const footerData = {
       ],
     },
   ],
-  secondaryLinks: [{ text: 'Privacy Policy', href: getPermalink('/privacy') }],
+  secondaryLinks: [],
   socialLinks: [],
   footNote: `© ${new Date().getFullYear()} Rocket Tutoring LLC. Delegate is an independent app and isn't affiliated with or endorsed by Manager.io.`,
 };
