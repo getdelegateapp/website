@@ -16,6 +16,7 @@ export const footerData = {
         { text: 'Features', href: getPermalink('/#features') },
         { text: 'Questions', href: getPermalink('/#questions') },
         { text: 'Privacy Policy', href: getPermalink('/privacy') },
+        { text: 'Terms of Service', href: getPermalink('/terms') },
       ],
     },
     {
