@@ -7,11 +7,14 @@ import StoreLinks from '~/components/StoreLinks.astro';
 import { SITE, METADATA, I18N } from 'astrowind:config';
 import { Icon } from 'astro-icon/components';
 
-import summary from '~/assets/images/screens/iphone-01.png';
-import sales from '~/assets/images/screens/iphone-02.png';
-import bankAccount from '~/assets/images/screens/iphone-04.png';
-import invoice from '~/assets/images/screens/iphone-05.png';
-import ipadSummary from '~/assets/images/screens/ipad-01.png';
+import summary from '~/assets/images/screens/iphone-summary.png';
+import androidSales from '~/assets/images/screens/phone-sales.png';
+import androidPurchases from '~/assets/images/screens/phone-purchases.png';
+import invoice from '~/assets/images/screens/iphone-invoice.png';
+import bankAccount from '~/assets/images/screens/iphone-account.png';
+import androidProjects from '~/assets/images/screens/phone-projects.png';
+import ipadSummary from '~/assets/images/screens/ipad-land-summary.png';
+import androidTabletPurchases from '~/assets/images/screens/tab-port-purchases.png';
 import appIcon from '~/assets/images/app-icon.png';
 
 const metadata = {
@@ -39,20 +42,26 @@ const features = [
   {
     title: 'Stay on top of invoices',
     text: 'Search sales and purchase invoices, and filter to what’s unpaid or overdue. Create, edit, or duplicate an invoice, or draft a payment reminder to a customer.',
-    image: sales,
-    alt: 'The Sales tab with the total owed, late invoices, and a list of paid and unpaid invoices.',
+    image: androidSales,
+    alt: 'Delegate on Android: the Sales tab with the total owed, 11 late invoices, and the latest invoices.',
   },
   {
     title: 'Record a payment where you see the invoice',
     text: 'Mark an invoice paid from its detail screen, and balances update straight away. Open the original Manager document to print it or share it as a PDF.',
     image: invoice,
-    alt: 'A paid sales invoice with its lines, the payment received, and a zero balance due.',
+    alt: 'Delegate on iPhone: a sales invoice with its lines, balance due, and the projects it belongs to.',
   },
   {
     title: 'Follow every bank and cash account',
     text: 'Balances with a 90-day chart, and the receipts, payments, and transfers behind them. Add or edit accounts without going back to the browser.',
     image: bankAccount,
-    alt: 'A bank account’s balance chart above its recent receipts and payments.',
+    alt: 'Delegate on iPhone: a bank account’s 90-day balance chart above its recent receipts and payments.',
+  },
+  {
+    title: 'See what each job made',
+    text: 'Turn on Projects under More › Modules to see each project’s income, expenses, and margin, with the invoices, bills, and payments behind them. Start a new invoice or bill for a project from its page.',
+    image: androidProjects,
+    alt: 'Delegate on Android: Projects with total profit and margin, and active and inactive projects.',
   },
 ];
 
@@ -98,8 +107,13 @@ const extras = [
         </p>
         <StoreLinks class="mt-8" />
       </div>
-      <div class="mx-auto w-[min(70vw,300px)]">
-        <PhoneShot src={summary} alt="Delegate’s Summary screen for a sample hardware store." eager />
+      <div class="relative mx-auto w-[min(86vw,400px)] pb-8 sm:pb-10">
+        <div class="ms-auto w-[64%] translate-y-8 sm:translate-y-10 opacity-95">
+          <PhoneShot src={androidPurchases} alt="Delegate on Android: the Purchases tab for a sample hardware store." />
+        </div>
+        <div class="absolute start-0 top-0 w-[68%]">
+          <PhoneShot src={summary} alt="Delegate on iPhone: the Summary screen for a sample hardware store." eager />
+        </div>
       </div>
     </div>
   </section>
@@ -125,24 +139,32 @@ const extras = [
     </div>
   </section>
 
-  <!-- iPad -->
+  <!-- Tablets -->
   <section class="not-prose">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12 md:py-20">
       <div class="max-w-2xl">
         <h2 class="font-heading text-heading text-3xl md:text-4xl font-semibold tracking-tight leading-tight">
-          See where the business stands
+          Made for iPad and Android tablets too
         </h2>
         <p class="mt-4 text-lg text-muted leading-relaxed">
-          Your cash balance and how it’s changed, money in and out, what customers owe you, and what you owe. Tap any
-          figure to see the entries behind it. On iPad, it all fits on one screen.
+          Summary fits on one screen: your cash and how it’s changed, money in and out, what customers owe you, and what
+          you owe. Sales, Purchases, and Banking show the list and the record you picked side by side, in portrait or
+          landscape.
         </p>
       </div>
-      <div class="mt-10 max-w-4xl">
+      <div class="mt-10 grid items-end gap-6 md:grid-cols-[minmax(0,3fr)_minmax(0,1fr)] md:gap-8">
         <PhoneShot
           src={ipadSummary}
           device="tablet"
-          alt="Delegate on iPad: Summary with cash, cash flow, amounts owed, top customers, and accounts in two columns."
+          alt="Delegate on iPad in landscape: Summary with cash, cash flow, amounts owed, and recent overdue invoices and bills."
         />
+        <div class="mx-auto w-[min(60vw,280px)] md:w-full">
+          <PhoneShot
+            src={androidTabletPurchases}
+            device="tablet"
+            alt="Delegate on an Android tablet in portrait: the purchase invoice list beside a part-paid bill."
+          />
+        </div>
       </div>
     </div>
   </section>
